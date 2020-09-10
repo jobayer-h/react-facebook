@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: '36ch',
+    maxWidth: '700px',
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
@@ -20,23 +20,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Comments(props) {
-    const {name, email, body , id} = props.comment;
+  const { name, email, body, id } = props.comment;
   const classes = useStyles();
 
-  const [picture, setPicture] = useState([]);
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(response => response.json())
-    .then(data => setPicture(data))
-  },[])
-  const avatarImg = picture.find(pic => pic.id === id)
-  // const {url} = avatarImg;
-  // console.log(url);
+  const postStyle = {
+    textAlign: 'center',
+  }
+
   return (
-    <List className={classes.root}>
+    <List style={postStyle} className={classes.root}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="" />
+          <Avatar alt="Remy Sharp" src={`https://randomuser.me/api/portraits/med/men/${id}.jpg`} />
         </ListItemAvatar>
         <ListItemText
           primary={name}

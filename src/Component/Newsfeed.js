@@ -47,64 +47,54 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Newsfeed(props) {
   const classes = useStyles();
- 
 
-  const [spacing, setSpacing] = React.useState(50);
 
-  const {title , body, id ,userId} = props.post;
+  const { title, body, id, userId } = props.post;
 
   return (
 
-    <Grid item xs={12}>
-        <Grid container justify="center" spacing={spacing}>
-        <Grid item>
-              <Card className={classes.root}>
-                    <CardHeader
-                        avatar={
-                        <Avatar aria-label="recipe" className={classes.avatar}>
-                            {userId}
-                        </Avatar>
-                        }
-                        action={
-                        <IconButton aria-label="settings">
-                            <MoreVertIcon />
-                        </IconButton>
-                        }
-                        title={title}
-                        subheader="September 14, 2016"
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image={blogPicture}
-                        title="Paella dish"
-                    />
-                    <CardContent>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {body}
-                        </Typography>
-                    </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                        <ShareIcon />
-                        </IconButton>
-                        
-                        <Link to={`post/${id}`}>
-                            <Button variant="contained" color="primary">
-                            See More
-                            </Button>
-                        </Link>
-                        
-                    </CardActions>
-                    
-                    </Card>
-            </Grid>
-        </Grid>
-      </Grid>
 
+    <Grid item>
+      <Card className={classes.root}>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="recipe" className={classes.avatar} src={`https://randomuser.me/api/portraits/med/men/${userId}.jpg`}>
+            </Avatar>
+          }
+          action={
+            <IconButton aria-label="settings">
+              <MoreVertIcon onClick={() => alert('working on it...')} />
+            </IconButton>
+          }
+          title={title}
+        />
+        <CardMedia
+          className={classes.media}
+          image={blogPicture}
+          title="Thumbnail Image"
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {body}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon onClick={() => alert('working on it...')} />
+          </IconButton>
+          <IconButton aria-label="share">
+            <ShareIcon onClick={() => alert('working on it...')} />
+          </IconButton>
 
-    
+          <Link to={`post/${id}`}>
+            <Button variant="contained" color="primary">
+              See More
+            </Button>
+          </Link>
+
+        </CardActions>
+
+      </Card>
+    </Grid>
   );
 }

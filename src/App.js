@@ -14,7 +14,6 @@ function App() {
   return (
     <Router>
       <PrimarySearchAppBar></PrimarySearchAppBar>
-      
 
       <Switch>
         <Route exact path="/">
